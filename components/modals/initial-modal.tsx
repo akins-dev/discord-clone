@@ -5,21 +5,21 @@ import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { 
-    Dialog, 
-    DialogContent, 
-    DialogDescription, 
-    DialogFooter, 
-    DialogHeader, 
-    DialogTitle 
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle
 } from "@/components/ui/dialog";
-import { 
-    Form, 
-    FormControl, 
-    FormField, 
-    FormItem, 
-    FormLabel, 
-    FormMessage 
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -53,7 +53,13 @@ const InitialModal = () => {
     const isLoading = form.formState.isSubmitting;
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        console.log(values)
+        console.log("🚀 ~ onSubmit ~ values:", values)
+
+        try {
+
+        } catch (error) {
+            console.log("🚀 ~ onSubmit ~ error:", error)
+        }
     }
 
     if (!isMounted) {
@@ -79,10 +85,10 @@ const InitialModal = () => {
                                 <FormField
                                     control={form.control}
                                     name="imageUrl"
-                                    render={({field}) => (
+                                    render={({ field }) => (
                                         <FormItem>
                                             <FormControl>
-                                                <FileUpload 
+                                                <FileUpload
                                                     endpoint="serverImage"
                                                     value={field.value}
                                                     onChange={field.onChange}
@@ -103,7 +109,7 @@ const InitialModal = () => {
                                             Server name
                                         </FormLabel>
                                         <FormControl>
-                                            <Input 
+                                            <Input
                                                 disabled={isLoading}
                                                 className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
                                                 placeholder="Enter server name"
