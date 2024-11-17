@@ -26,7 +26,7 @@ const FileUpload = ({
         <Image
           src={value}
           alt="Upload"
-          fill
+          fill   
           className="rounded-full"
         />
         <button
