@@ -8,8 +8,8 @@ generator client {
 }
 
 model Profile {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId   String   @unique
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId   String    @unique
   name     String
   imageUrl String
   email    String
@@ -25,12 +25,12 @@ model Server {
   id         String @id @default(auto()) @map("_id") @db.ObjectId
   name       String
   imageUrl   String
-  inviteCode String
+  inviteCode String @unique
 
   profileId String  @db.ObjectId
   profile   Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
-  members Member[]
+  members  Member[]
   channels Channel[]
 
   createdAt DateTime @default(now())
@@ -69,7 +69,7 @@ enum ChannelType {
 }
 
 model Channel {
-  id   String     @id @default(auto()) @map("_id") @db.ObjectId
+  id   String      @id @default(auto()) @map("_id") @db.ObjectId
   name String
   type ChannelType @default(TEXT)
 
